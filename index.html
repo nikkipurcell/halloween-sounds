@@ -1,0 +1,125 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <!-- <script src="index.js"></script> -->
+  <title>Halloween Soundboard</title>
+</head>
+
+<body>
+  <h1>Halloween Soundboard</h1>
+  <div class='keys'>
+    <div data-key='65' class='key'>
+      <kbd>A</kbd>
+      <span class="sound">heartbeat</span>
+    </div>
+    <div data-key='67' class='key'>
+      <kbd>C</kbd>
+      <span class="sound">chains</span>
+    </div>
+    <div data-key='80' class='key'>
+      <kbd>P</kbd>
+      <span class="sound">splat</span>
+    </div>
+    <div data-key='68' class='key'>
+      <kbd>D</kbd>
+      <span class="sound">witch cackle</span>
+    </div>
+    <div data-key='69' class='key'>
+      <kbd>E</kbd>
+      <span class="sound">evil man</span>
+    </div>
+    <div data-key='83' class='key'>
+      <kbd>S</kbd>
+      <span class="sound">swamp</span>
+    </div>
+    <div data-key='72' class='key'>
+      <kbd>H</kbd>
+      <span class="sound">church bells</span>
+    </div>
+    <div data-key='71' class='key'>
+      <kbd>G</kbd>
+      <span class="sound">howl</span>
+    </div>
+    <div data-key='86' class='key'>
+      <kbd>V</kbd>
+      <span class="sound">howl 2</span>
+    </div>
+    <div data-key='76' class='key'>
+      <kbd>L</kbd>
+      <span class="sound">lab</span>
+    </div>
+    <div data-key='82' class='key'>
+      <kbd>R</kbd>
+      <span class="sound">lid creak</span>
+    </div>
+    <div data-key='77' class='key'>
+      <kbd>M</kbd>
+      <span class="sound">scream</span>
+    </div>
+    <div data-key='70' class='key'>
+      <kbd>F</kbd>
+      <span class="sound">frankenstein</span>
+    </div>
+    <div data-key='79' class='key'>
+      <kbd>O</kbd>
+      <span class="sound">owl</span>
+    </div>
+    <div data-key='66' class='key'>
+      <kbd>B</kbd>
+      <span class="sound">bird</span>
+    </div>
+    <div data-key='87' class='key'>
+      <kbd>W</kbd>
+      <span class="sound">crows</span>
+    </div>
+  </div>
+
+  <audio data-key="83" src="sounds/Swamp_Background_web.wav"></audio>
+  <audio data-key="80" src="sounds/SPLAT2.wav"></audio>
+  <audio data-key="67" src="sounds/Chain01.wav"></audio>
+  <audio data-key="65" src="sounds/heartbeat.wav"></audio>
+  <audio data-key="68" src="sounds/wlaugh.wav"></audio>
+  <audio data-key="72" src="sounds/hhgsfog.wav"></audio>
+  <audio data-key="71" src="sounds/howl1.wav"></audio>
+  <audio data-key="86" src="sounds/wolf2.wav"></audio>
+  <audio data-key="69" src="sounds/wickedmalelaugh1.wav"></audio>
+  <audio data-key="76" src="sounds/labclip.wav"></audio>
+  <audio data-key="82" src="sounds/lidcreak.wav"></audio>
+  <audio data-key="77" src="sounds/nmh_scream1.wav"></audio>
+  <audio data-key="70" src="sounds/Moaning_Chains.wav"></audio>
+  <audio data-key="87" src="sounds/sf_crow_01.mp3"></audio>
+  <audio data-key="66" src="sounds/SF-bird7.mp3"></audio>
+  <audio data-key="79" src="sounds/SF-owl.mp3"></audio>
+  <script>
+    // Used http://keycode.info/ for keyCodes
+
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+      if (!audio) return;
+
+      audio.currentTime = 0; // rewinds audio to the start
+      audio.play();
+
+      key.classList.add('playing');
+    }
+
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return; // skip if not a transform
+
+      this.classList.remove('playing');
+    }
+
+
+    const myKeys = document.querySelectorAll('.key');
+    myKeys.forEach(item => item.addEventListener('transitionend', removeTransition));
+
+    window.addEventListener('keydown', playSound);
+  </script>
+</body>
+
+</html>

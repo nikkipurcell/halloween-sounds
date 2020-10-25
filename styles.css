@@ -1,0 +1,53 @@
+body {
+  background-image: url("img/redwall.jpg");
+  background-color: #000;
+  text-align: center;
+ }
+
+ h1 {
+  color: #ffc600;
+  font-size: 50px;
+  text-shadow: 5px 5px 5px black;
+  font-size: 3.75em;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding-top: 40px;
+ }
+
+ .keys {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+ }
+
+.key {
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all 0.1s;
+  flex: 1 1 115px;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 5px black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 40px;
+}
+
+.sound {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffc600;
+}
